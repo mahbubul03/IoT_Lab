@@ -1,0 +1,45 @@
+#include <DHT.h>
+#include <Servo.h>
+
+#define DHTPIN    D1
+#define DHTTYPE   DHT11
+#define SERVO_PIN D4
+
+#define TEMP_THRESHOLD 23.0
+
+DHT dht(DHTPIN, DHTTYPE);
+Servo myServo;
+
+void setup() {
+  Serial.begin(115200);
+  dht.begin();
+  myServo.attach(SERVO_PIN);
+  Serial.println("DHT11 + Servo Ready!");
+}
+
+void loop() {
+  delay(2000); 
+
+  float humidity = dht.readHumidity();
+  float tempC    = dht.readTemperature();
+
+  if (isnan(humidity) || isnan(tempC)) {
+    Serial.println("Sensor error! Check wiring.");
+    return;
+  }
+
+  
+  Serial.print("Temp     : "); Serial.print(tempC);    Serial.println(" C");
+  Serial.print("Humidity : "); Serial.print(humidity); Serial.println(" %");
+
+
+  if (tempC < TEMP_THRESHOLD) {
+    myServo.write(0);
+    Serial.println("Servo     : 0° (Cool)");
+  } else {
+    myServo.write(180);
+    Serial.println("Servo     : 180° (Hot)");
+  }
+
+  Serial.println("--------------------------");
+}
