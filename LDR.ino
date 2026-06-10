@@ -1,0 +1,23 @@
+const int ldr = D0;
+const int led = D1;
+
+void setup(){
+
+Serial.begin(9600);
+pinMode(led, OUTPUT);
+pinMode(ldr, INPUT); 
+delay(500);
+}
+void loop() {
+  int value=digitalRead(ldr);
+  if(value == 1){
+    digitalWrite(led,HIGH);
+  }
+  else {
+    digitalWrite(led, LOW);
+  }
+
+  Serial.println(value);
+delay(500);
+
+}
