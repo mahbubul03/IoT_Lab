@@ -4,7 +4,7 @@
 
 // WiFi Credentials
 #define WIFI_SSID "BUBT Hub"
-#define WIFI_PASSWORD "hub%2026%"
+#define WIFI_PASSWORD "hub2026"
 
 // Firebase Credentials
 #define API_KEY "AIzaSyAKhgwcKqAEIGeQBtWws7ObCUcnqLibhUg"
