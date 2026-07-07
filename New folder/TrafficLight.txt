@@ -1,0 +1,24 @@
+#define pred D1
+#define pyellow D2
+#define pgreen D3
+void setup() {
+  pinMode(pred, OUTPUT);
+  pinMode(pyellow, OUTPUT);
+  pinMode(pgreen, OUTPUT);
+}
+void loop() {
+  digitalWrite(pred, HIGH);
+  digitalWrite(pyellow,  LOW);
+  digitalWrite(pgreen, LOW);
+  delay(1000);
+
+  digitalWrite(pred, LOW);
+  digitalWrite(pyellow, LOW);
+  digitalWrite(pgreen, HIGH);
+  delay(1500);
+
+  digitalWrite(pred, LOW);
+  digitalWrite(pyellow, HIGH);
+  digitalWrite(pgreen, LOW);
+  delay(500);
+}

@@ -1,0 +1,27 @@
+#include <Servo.h>
+
+Servo myServo;
+
+int SERVO_PIN = D4;
+
+void setup() {
+  Serial.begin(115200);
+  myServo.attach(SERVO_PIN);
+  Serial.println("Servo initialized");
+}
+
+void loop() {
+  for (int angle = 0; angle <= 180; angle += 1) {
+    myServo.write(angle);
+    delay(15);
+  }
+
+  delay(100);
+
+  for (int angle = 180; angle >= 0; angle -= 1) {
+    myServo.write(angle);
+    delay(15);
+  }
+
+  delay(100);
+}
